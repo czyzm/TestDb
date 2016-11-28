@@ -32,9 +32,7 @@ Config.xml file:
 </widget>
 
 
-Plugins: 
-
-io.jxcore.node
+No Plugins Currently Installed
 
 No Platforms Currently Installed
 
