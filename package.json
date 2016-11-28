@@ -1,0 +1,11 @@
+{
+  "name": "testdb",
+  "version": "1.0.0",
+  "description": "A test app to check performance of the pouch db hosted in jxcore using express-pouchdb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
