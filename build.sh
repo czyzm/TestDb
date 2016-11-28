@@ -14,7 +14,10 @@ cd www/jxcore
 jx npm install --no-optional --autoremove "*.gz"
 find . -name "*.gz" -delete
 
-cd ../..
+cd ..
+bower install pouchdb#5.4.5
+
+cd ..
 cordova platform add android
 cordova build android --device
 

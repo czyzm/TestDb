@@ -16,7 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var jxcoreLoaded = false;
+var jxcoreLoaded = false,
+    localDb;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -32,7 +33,11 @@ var app = {
         jxcore.isReady(function() {
             jxcore('app.js').loadMainFile(function(ret, err) {
                 console.log('jxcore loaded');
-                jxcoreLoaded = true;
+                // give some time for DB initialization
+                setTimeout(function () {
+                    jxcoreLoaded = true;
+                    localDb = new PouchDB('http://localhost:8080/dbs/LocalDB')
+                }, 20000);
             });
         });
     },
@@ -49,5 +54,24 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+function queryDb () {
+    if (!jxcoreLoaded) {
+        alert("jxcore not loaded - please wait");
+        return;
+    }
+    console.log('TestDb execute query');
+    localDb.query('testdoc', {
+        limit: 100,
+        include_docs: true
+    }).then(function (result) {
+        console.log('TestDb got result ' + result.rows.length);
+    }).catch(function (err) {
+        console.log('TestDb got error ' + err);
+    });
+}
+
+setTimeout(queryDb, 30000);
+
 
 app.initialize();
