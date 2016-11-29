@@ -74,10 +74,10 @@ Mobile.getDocumentsPath(function(err, location) {
             // ignore if doc already exists
         });
 
-        // prefill DB with 1000 docs
+        // prefill DB with 6000 docs
         var i,
             doc;
-        for (i = 0; i < 1000; i++) {
+        for (i = 0; i < 6000; i++) {
             doc = {
                 "_id": "TestDoc" + i,
                 "title": "TestTitle" + i
@@ -90,17 +90,5 @@ Mobile.getDocumentsPath(function(err, location) {
                     console.log("TestDb error while adding data: " + err);
                 });
         }
-/*/
-        setTimeout(function () {
-            localDb.query('testdoc', {
-                limit: 100,
-                include_docs: true
-            }).then(function (result) {
-                console.log('TestDb got result ' + result.rows.length);
-            }).catch(function (err) {
-                console.log('TestDb got error ' + err);
-            });
-        }, 15000);
-        */
     }
 });

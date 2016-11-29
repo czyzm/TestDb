@@ -71,7 +71,9 @@ function queryDb () {
     });
 }
 
-setTimeout(queryDb, 30000);
+setTimeout(function () {
+        setInterval(queryDb, 500);
+    }, 60000);
 
 
 app.initialize();
